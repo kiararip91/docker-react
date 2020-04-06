@@ -3,4 +3,8 @@ services:
   - docker
 
 before_install:
+  - gem install bundler
   - docker build -t kiararip/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true kiararip/docker-react npm run test
